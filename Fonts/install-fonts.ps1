@@ -12,6 +12,7 @@ $TempFolder  = Join-Path $DOTFILES "Fonts\Temp"
 # Create the source directory if it doesn't already exist
 New-Item -ItemType Directory -Force -Path $SourceDir
 
+# Create the temporary directory
 New-Item $TempFolder -Type Directory -Force | Out-Null
 
 Get-ChildItem -Path $Source -Include '*.ttf','*.ttc','*.otf' -Recurse | ForEach {

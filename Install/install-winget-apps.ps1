@@ -11,6 +11,7 @@ $apps = @(
     @{name = "7zip.7zip" }, 
     @{name = "JohnMacFarlane.Pandoc" },
     @{name = "youtube-dl.youtube-dl"},
+    @{name = "AutoHotkey.AutoHotkey"},
 
     # Network tools
     @{name = "ProtonTechnologies.ProtonVPN" }, 

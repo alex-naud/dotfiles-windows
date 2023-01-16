@@ -18,13 +18,12 @@ Write-host "Installing Micro" -BackgroundColor DarkGreen -ForegroundColor White
 
 ## Install Fonts
 Write-host "Installing Fonts" -BackgroundColor DarkGreen -ForegroundColor White
-& ./Fonts/install-fonts.ps1
+& ./Fonts/install-fonts.ps1 # TODO Move ./Install and add all Hasklug fonts (with -Recurse)
 
 # Setup Install Ubunt in WSL2
 wsl --install -d "Ubuntu"
 
 # Debloat
-
 ## Remove applications
 Write-host "Removing unwanted applications" -BackgroundColor DarkGreen -ForegroundColor White
 & ./Debloat/uninstall-winget-apps.ps1
@@ -40,15 +39,8 @@ New-Item -ItemType SymbolicLink -Path $profile -Target .\Config\profile.ps1
 $alacrittyProfile = Join-Path $HOME "\AppData\Roaming\alacritty\alacritty.yml"
 New-Item -ItemType SymbolicLink -Path $alacrittyProfile -Target .\Config\alacritty.yml -Force
 
-## Micro
-### Keybinding more alike vim
-
 # Change keymaps (auto hotkeys)
-## Move file to other workspace
-## WIN+T terminal (alacritty?)
-## WIN+B browser (firefox?)
-## Win+M maximize
-
-# Set default applications
+& ./Autohotkey/setup.ps1
 
 # Send Message to reboot machine on different colors
+Write-host "Reboot to finish WSL installation" -BackgroundColor Red -ForegroundColor White

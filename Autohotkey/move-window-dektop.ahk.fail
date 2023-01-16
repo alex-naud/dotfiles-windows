@@ -1,0 +1,22 @@
+; Add window movement between virtual desktop
+; From https://superuser.com/questions/1685845/moving-current-window-to-another-desktop-in-windows-11-using-shortcut-keys
+
+^#+Left::
+n := VD.getCurrentDesktopNum()
+if n = 1
+{
+    Return
+}
+n -= 1
+VD.MoveWindowToDesktopNum("A",n), VD.goToDesktopNum(n)
+Return
+
+^#+Right::
+n := VD.getCurrentDesktopNum()
+if n = % VD.getCount()
+{
+    Return
+}
+n += 1
+VD.MoveWindowToDesktopNum("A",n), VD.goToDesktopNum(n)
+Return

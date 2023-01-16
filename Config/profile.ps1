@@ -5,6 +5,8 @@ $DOTFILES = Join-Path $GHFOLDER -ChildPath $GHUSER | Join-Path -ChildPath "dotfi
 # Alias
 New-Alias micro ~\.dev\micro-2.0.11\micro.exe
 New-Alias l ls
+New-Alias touch ni
+
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 
 # CD functions
