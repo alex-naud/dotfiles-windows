@@ -5,7 +5,6 @@ $apps = @(
         @{name = "Microsoft.YourPhone_8wekyb3d8bbwe" },
         @{name = "SpotifyAB.SpotifyMusic_zpdnekdrzrea0"},
         @{name = "MicrosoftTeams_8wekyb3d8bbwe"},
-        @{name = "MicrosoftTeams_8wekyb3d8bbwe"},
         @{name = "Cortana"},
         @{name = "Microsoft News"},
         @{name = "MSN Weather"},
@@ -25,9 +24,10 @@ $apps = @(
         @{name = "Microsoft Family"},
         @{name = "Windows Web Experience Pack"},
         @{name = "Quick Assist"},
-        @{name = "Mail and Calendar"}
+        @{name = "Mail and Calendar"},
+        @{name = "Microsoft.WindowsTerminal"},
+        @{name = "Office"}
         
-# TODO FIND ALL
 );
 
 # Uninstall apps if found
@@ -40,4 +40,7 @@ Foreach ($app in $apps) {
          Write-host "Uninstalling:" $app.name
          winget uninstall --exact --silent $app.name   
        }
+    else {
+    	Write-host $app.name "not found"
+    }
 }

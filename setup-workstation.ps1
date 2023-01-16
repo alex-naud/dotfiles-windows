@@ -1,17 +1,27 @@
-# Winget
+# Set dotfile location as environment variable
+if ($DOTFILES -eq $null){
+	Write-hose "Set DOTFILES as PWD" -BackgroundColor DarkGreen -ForegroundColor White
+	$DOTFILES = $PWD
+}
+
+# Install stuff
+## Winget
 Write-host "Installing winget" -BackgroundColor DarkGreen -ForegroundColor White
 & ./Install/install-winget.ps1
 
 Write-host "Installing various apps from winget" -BackgroundColor DarkGreen -ForegroundColor White
 & ./Install/install-winget-apps.ps1
 
-# Install Micro
+## Install Micro
 Write-host "Installing Micro" -BackgroundColor DarkGreen -ForegroundColor White
 & ./Install/install-micro.ps1
 
-# Install Fonts
+## Install Fonts
+Write-host "Installing Fonts" -BackgroundColor DarkGreen -ForegroundColor White
+& ./Fonts/install-fonts.ps1
 
-# Setup WSL2
+# Setup Install Ubunt in WSL2
+wsl --install -d "Ubuntu"
 
 # Debloat
 
@@ -20,22 +30,25 @@ Write-host "Removing unwanted applications" -BackgroundColor DarkGreen -Foregrou
 & ./Debloat/uninstall-winget-apps.ps1
 
 ## Empty desktop folder
-## Unpin app from taskbar
+Get-ChildItem -Path ~\Desktop -Include * -File -Recurse | foreach { $_.Delete()}
 
 # Add configurations
 ## Pwshell 
-### alias
+New-Item -ItemType SymbolicLink -Path $profile -Target .\Config\profile.ps1
 
-## Windows terminale
-### No top bar
-### Start maximize
-### Stop warning copy multiple line
-
-## Youtube-dl
+# Alacritty
+$alacrittyProfile = Join-Path $HOME "\AppData\Roaming\alacritty\alacritty.yml"
+New-Item -ItemType SymbolicLink -Path $alacrittyProfile -Target .\Config\alacritty.yml -Force
 
 ## Micro
 ### Keybinding more alike vim
 
 # Change keymaps (auto hotkeys)
+## Move file to other workspace
+## WIN+T terminal (alacritty?)
+## WIN+B browser (firefox?)
+## Win+M maximize
 
-# Add profile icon
+# Set default applications
+
+# Send Message to reboot machine on different colors

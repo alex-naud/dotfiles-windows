@@ -23,6 +23,7 @@ $apps = @(
     @{name = "Microsoft.WindowsTerminal" }, 
     @{name = "Git.Git" },
     @{name = "GitHub.cli" },
+    @{name = "Alacritty.Alacritty"},
 
 	# Work
     @{name = "TomWatson.BreakTimer" },
