@@ -40,7 +40,11 @@ $alacrittyProfile = Join-Path $HOME "\AppData\Roaming\alacritty\alacritty.yml"
 New-Item -ItemType SymbolicLink -Path $alacrittyProfile -Target .\Config\alacritty.yml -Force
 
 # Change keymaps (auto hotkeys)
-& ./Autohotkey/setup.ps1
+& ./Autohotkey/setup.ps1 # TODO Add movement of active windows between desktop
 
+# Remove simple left mouse button menu
+## From https://www.ubackup.com/windows-11/windows-11-always-show-more-options-right-click-jkzbj.html
+"reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /ve /d "" /f" | cmd
+    
 # Send Message to reboot machine on different colors
 Write-host "Reboot to finish WSL installation" -BackgroundColor Red -ForegroundColor White
