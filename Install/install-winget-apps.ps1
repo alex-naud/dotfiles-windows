@@ -12,6 +12,7 @@ $apps = @(
     @{name = "JohnMacFarlane.Pandoc" },
     @{name = "youtube-dl.youtube-dl"},
     @{name = "AutoHotkey.AutoHotkey"},
+    @{name = "OBSProject.OBSStudio"},
 
     # Network tools
     @{name = "ProtonTechnologies.ProtonVPN" }, 
